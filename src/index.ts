@@ -7,10 +7,14 @@ import path from "path";
 require("dotenv").config();
 
 const app = express();
-// Create a new hhtp server
+// Create a new http server
 const server = createServer(app);
 // Attach server to socket
-const io = new Server(server);
+const io = new Server(server, {
+  cors: {
+    credentials: true,
+  },
+});
 
 app.use(
   cors({
